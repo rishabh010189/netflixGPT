@@ -1,6 +1,7 @@
+
 interface BigInputProps {
     type:string;
-    placeholder:string
+    placeholder:string;
 }
 
 export default BigInputProps;
