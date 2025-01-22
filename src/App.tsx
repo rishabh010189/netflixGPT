@@ -1,32 +1,37 @@
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import Login from "./components/Login/Login";
-import Browse from "./components/Browse/Browse";
+import { Outlet, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "./utils/firebase";
+import { addUser, removeUser } from "./utils/userSlice";
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fas } from '@fortawesome/free-solid-svg-icons'
 
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <Login />,
-  },
-  {
-    path: '/browse',
-    element: <Browse />,
-  },
-]);
+library.add(fas)
 
 function App() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
+  useEffect(() => {
+    // listen for onAuthStateChange provided by the firebase
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const {uid, email, displayName, photoURL} = user;
+        dispatch(addUser({uid, email, displayName, photoURL}));
+        navigate("/browse");
+      } else {
+        // User is signed out
+        dispatch(removeUser());
+        navigate("/");
+      }
+    });
+  }, [])
   return (
-    <div className="">
-    <RouterProvider router={router} />
-    {/* <BrowserRouter>
-    <Routes>
-      <Route index element={<Body />}></Route>
-      <Route path="login" element={<Login />}></Route>
-    </Routes>
-      
-    </BrowserRouter> */}
-    </div>
-  )
+      <div className="">
+        <Outlet/>
+      </div>
+  );
 }
 
-export default App
+export default App;
