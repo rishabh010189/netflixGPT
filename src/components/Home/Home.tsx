@@ -1,8 +1,15 @@
+import useNowPlayingMovies from "../../hooks/useNowPlayingMovies";
+import MovieContainer from "../Movie Container/MovieContainer";
+import ShowcasePreview from "../Showcase Preview/ShowcasePreview";
 
 const Home = () => {
-  return (
-    <div>Home</div>
-  )
-}
+  // custom hook for getting Now playing movies
+  useNowPlayingMovies();
 
-export default Home
+  return <div>
+    <ShowcasePreview />
+    <MovieContainer />
+  </div>;
+};
+
+export default Home;

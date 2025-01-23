@@ -15,7 +15,7 @@ function App() {
 
   useEffect(() => {
     // listen for onAuthStateChange provided by the firebase
-    onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         const {uid, email, displayName, photoURL} = user;
         dispatch(addUser({uid, email, displayName, photoURL}));
@@ -26,6 +26,10 @@ function App() {
         navigate("/");
       }
     });
+
+    // unsubscribe when component unmounts
+
+    return () => unsubscribe();
   }, [])
   return (
       <div className="">

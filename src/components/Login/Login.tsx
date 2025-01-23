@@ -10,6 +10,7 @@ import {
 import { auth } from "../../utils/firebase";
 import { useDispatch } from "react-redux";
 import { addUser } from "../../utils/userSlice";
+import Constants from "../../utils/contants";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -32,9 +33,8 @@ const Login = () => {
 
     // Sign in / Sign Up Logic
     if (!isSignInForm) {
-      let displayName = nameRef.current?.value ?? "";
-      let photoURL =
-        "https://assets.nflxext.com/ffe/siteui/vlv3/e3e9c31f-aa15-4a8f-8059-04f01e6b8629/web/IN-en-20250113-TRIFECTA-perspective_febfa442-23d9-45f3-937e-72f8b971f7a9_small.jpg";
+      let displayName = nameRef.current?.value ?? "User";
+      let photoURL = Constants.PHOTO_URL_DEFAULT;
       createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
           // Signed up
@@ -86,8 +86,8 @@ const Login = () => {
       <div className="flex justify-center h-[100vh] items-center">
         <img
           className="absolute"
-          src="https://assets.nflxext.com/ffe/siteui/vlv3/e3e9c31f-aa15-4a8f-8059-04f01e6b8629/web/IN-en-20250113-TRIFECTA-perspective_febfa442-23d9-45f3-937e-72f8b971f7a9_small.jpg"
-          srcSet="https://assets.nflxext.com/ffe/siteui/vlv3/e3e9c31f-aa15-4a8f-8059-04f01e6b8629/web/IN-en-20250113-TRIFECTA-perspective_febfa442-23d9-45f3-937e-72f8b971f7a9_small.jpg 1000w, https://assets.nflxext.com/ffe/siteui/vlv3/e3e9c31f-aa15-4a8f-8059-04f01e6b8629/web/IN-en-20250113-TRIFECTA-perspective_febfa442-23d9-45f3-937e-72f8b971f7a9_medium.jpg 1500w, https://assets.nflxext.com/ffe/siteui/vlv3/e3e9c31f-aa15-4a8f-8059-04f01e6b8629/web/IN-en-20250113-TRIFECTA-perspective_febfa442-23d9-45f3-937e-72f8b971f7a9_large.jpg 1800w"
+          src={Constants.LOGIN_BG_IMG}
+          srcSet={Constants.LOGIN_BG_SRCSET}
           alt="bg-image"
         />
         <div className="bg-black/80 p-11 rounded-md z-50 w-[calc(100%-50px)] md:w-1/3">
