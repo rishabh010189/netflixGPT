@@ -3,7 +3,7 @@ import Home from "../Home/Home"
 
 const Browse = () => {
   return (
-    <div>
+    <div className="bg-black">
         <Header />
         <Home />
     </div>

@@ -11,9 +11,9 @@ const ShowcasePreview = () => {
     const {title, overview, id} = primeTimeMovie;
     console.log(primeTimeMovie)
   return (
-    <div>
-        <VideoBackground movieId={id}/>
+    <div className="">
         <VideoDescription title={title} overview={overview}/>
+        <VideoBackground movieId={id}/>
     </div>
   )
 }
