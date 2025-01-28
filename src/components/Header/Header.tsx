@@ -5,10 +5,13 @@ import { faBell } from '@fortawesome/free-regular-svg-icons/faBell';
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons/faCaretDown';
 import { signOut } from 'firebase/auth';
 import { auth } from '../../utils/firebase';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Constants from '../../utils/contants';
+import { toggleSearchView } from '../../utils/searchSlice';
 
 const Header = () => {
+
+  const dispatch = useDispatch();
 
   const user = useSelector((store:any) => store.user);
 
@@ -21,12 +24,16 @@ const Header = () => {
     });
   }
 
+  const toggleSearchViewHandler = () => {
+    dispatch(toggleSearchView());
+  }
+
   return (
     <div className='flex justify-between items-center absolute px-16 py-4 w-full bg-gradient-to-b from-black z-40'>
       <img src={logo} alt="logo" className='w-44'/>
       {
         user && <div className='flex gap-6 items-center'>
-        <div>
+        <div onClick={toggleSearchViewHandler}>
           <FontAwesomeIcon icon={faMagnifyingGlass} size='xl' className='text-white cursor-pointer'/>
         </div>
         <FontAwesomeIcon icon={faBell} size='xl' className='text-white cursor-pointer'/>

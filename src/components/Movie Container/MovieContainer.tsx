@@ -5,7 +5,7 @@ const MovieContainer = () => {
   const movies = useSelector((store:any) => store.movies);
   
   return (
-    <div className="movieContainer mt-10 relative -top-[400px]">
+    <div className="movieContainer mt-10 relative -top-[300px]">
       <MovieList title="No Playing" movieList={movies?.nowPlayingMovies}/>
       <MovieList title="Popular" movieList={movies?.popularMovies}/>
       <MovieList title="Top Rated" movieList={movies?.topRatedMovies}/>

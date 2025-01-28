@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 const VideoDescription:React.FC<{title:string, overview:string}> = ({title,overview}) => {
   return (
-    <div className="w-full aspect-video pt-80 absolute text-white bg-gradient-to-r from-black pl-24">
+    <div className="w-full aspect-video pt-60 absolute text-white bg-gradient-to-r from-black pl-24">
         <h1 className="text-5xl mb-4">{title}</h1>
         <p className="w-1/3">{overview}</p>
         <div className="mt-8">

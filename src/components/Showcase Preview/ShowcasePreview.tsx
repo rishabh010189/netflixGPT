@@ -9,7 +9,6 @@ const ShowcasePreview = () => {
 
     const primeTimeMovie = movies[0];
     const {title, overview, id} = primeTimeMovie;
-    console.log(primeTimeMovie)
   return (
     <div className="">
         <VideoDescription title={title} overview={overview}/>

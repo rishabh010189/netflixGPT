@@ -8,7 +8,8 @@ const VideoBackground: React.FC<{ movieId: number }> = ({ movieId }) => {
     <div className="w-full">
       <iframe
         className="w-full aspect-video"
-        src={`https://www.youtube.com/embed/${showcaseVideo?.key}?&autoplay=1&mute=1&loop=1&playlist=${showcaseVideo?.key}`}
+        // &loop=1&playlist=${showcaseVideo?.key}
+        src={`https://www.youtube.com/embed/${showcaseVideo?.key}?&autoplay=1&mute=1`}
         title="YouTube video player"
         referrerPolicy="strict-origin-when-cross-origin"
         allow="autoplay; encrypted-media"
