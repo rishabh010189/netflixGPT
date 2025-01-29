@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const axiosInstanceOpenAi = axios.create({
-    baseURL : 'http://localhost:3000'
+    baseURL : 'https://netflix-backend-topaz.vercel.app/'
 })
 
 axiosInstanceOpenAi.interceptors.request.use(
